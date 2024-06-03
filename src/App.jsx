@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Header,Footer} from "./components/index"
+
+
+
 import { useDispatch } from 'react-redux';
 import authservice from './appwrite/auth';
 import { login, logout } from './store/authSlice';
@@ -26,12 +27,23 @@ function App() {
       .finally(()=> setLoading(false))
   }, [])
 
+  //teritory operator 
+  return !loading ? (
 
-  return (
-    <>
-     <h1 className='bg-red-700 text-white'>hello appwrite</h1>
-    </>
-  )
+    <div className='bg-yellow-700 h-screen w-screen p-10 '>
+        <div className=' bg-green-700 h-full w-full flex justify-between flex-col items-center '>
+                <Header/>
+                <main>
+                <Outlet/>
+                </main>
+                <Footer/>
+        </div>
+
+    </div>
+
+  ): null 
+
+  
 }
 
 export default App
